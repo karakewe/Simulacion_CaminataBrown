@@ -10,7 +10,7 @@ st.title("Simulación de Caminata Aleatoria en 2D")
 with st.sidebar:
     st.header("Parámetros")
     e = st.number_input("Numero de Caminatas", min_value=1, value=5)
-    n = st.number_input("Pasos de Caminata", min_value=1, value=50)
+    n = st.number_input("Pasos por Caminata", min_value=1, value=50)
     k = st.number_input("Tamaño del Paso", min_value=1, value=1)
     mostrar_trayectorias = st.checkbox("Mostrar todas las trayectorias", value=True)
     mostrar_finales = st.checkbox("Mostrar sólo posiciones finales", value=False)
