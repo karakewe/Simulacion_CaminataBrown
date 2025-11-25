@@ -14,18 +14,17 @@ def euclidiana(x, y):
 def simulate_random_walk_2d(n_iteraciones, unidad_incremento):
     posicion_x = [0]
     posicion_y = [0]
-    for idx in range(n_iteraciones):
-        resultado_x = evento_50_porciento_random()
-        if resultado_x == "Sí aumenta":
-            posicion_x.append(posicion_x[idx] + unidad_incremento)
+    for id in range(n_iteraciones):
+        resultado = evento_50_porciento_random()
+        if resultado == "Sí aumenta":
+            posicion_x.append(posicion_x[id] + unidad_incremento)
         else:
-            posicion_x.append(posicion_x[idx] - unidad_incremento)
-    for idy in range(n_iteraciones):
-        resultado_y = evento_50_porciento_random()
-        if resultado_y == "Sí aumenta":
-            posicion_y.append(posicion_y[idy] + unidad_incremento)
+            posicion_x.append(posicion_x[id] - unidad_incremento)
+        resultado = evento_50_porciento_random()
+        if resultado == "Sí aumenta":
+            posicion_y.append(posicion_y[id] + unidad_incremento)
         else:
-            posicion_y.append(posicion_y[idy] - unidad_incremento)
+            posicion_y.append(posicion_y[id] - unidad_incremento)
     return posicion_x, posicion_y
 
 def simulate_experiments(cantidad_experimentos, n_iteraciones, unidad_incremento):
