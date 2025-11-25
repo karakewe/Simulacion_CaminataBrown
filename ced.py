@@ -1,6 +1,7 @@
 import random
 import pandas as pd
 import matplotlib.pyplot as plt
+import time
 
 def evento_50_porciento_random():
     if random.random() < 0.5:
@@ -31,12 +32,16 @@ def simulate_experiments(cantidad_experimentos, n_iteraciones, unidad_incremento
     df_resultados = pd.DataFrame()
     trayectorias = []
     for _ in range(cantidad_experimentos):
+        start = time.time()
         pos_x, pos_y = simulate_random_walk_2d(n_iteraciones, unidad_incremento)
+        end = time.time()
+        duration = end - start
         dicc = {
             "n_iteraciones": n_iteraciones,
             "posicion_final_x": pos_x[-1],
             "posicion_final_y": pos_y[-1],
-            "valor_euclidiano": euclidiana(pos_x[-1], pos_y[-1])
+            "valor_euclidiano": euclidiana(pos_x[-1], pos_y[-1]),
+            "duracion" : duration
         }
         df_resultados = pd.concat([df_resultados, pd.DataFrame([dicc])], ignore_index=True)
         trayectorias.append((pos_x, pos_y))
@@ -51,9 +56,9 @@ def plot_trayectoria(pos_x, pos_y):
     return plt.gcf()
 
 def run_cli():
-    e = int(input("Cantidad de experimentos:"))
-    n = int(input("Cantidad de iteraciones: "))
-    k = int(input("Unidad de incremento: "))
+    e = int(input("Cantidad de Caminatas:"))
+    n = int(input("Pasos por Caminata: "))
+    k = int(input("Tamaño del Paso: "))
     df, trayectorias = simulate_experiments(e, n, k)
     for pos_x, pos_y in trayectorias:
         plot_trayectoria(pos_x, pos_y)
